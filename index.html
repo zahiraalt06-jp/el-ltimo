@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#10233a">
+  <title>El último secreto de Carlos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="snow" aria-hidden="true"></div>
+  <main id="app">
+    <section id="gate" class="screen gate-screen">
+      <div class="cover-stage">
+        <img class="cover-art" src="assets/portada-navidad.png" alt="Portada navideña ilustrada con la protagonista y el gatito naranja en un pueblo nevado rosa">
+        <form id="passwordForm" class="cover-form">
+          <label class="sr-only" for="password">Introduce la contraseña</label>
+          <input id="password" type="password" autocomplete="off" placeholder="Escribe la contraseña" required aria-label="Contraseña">
+          <button type="submit" aria-label="Entrar al juego">Entrar</button>
+          <small id="passwordError" role="status"></small>
+        </form>
+      </div>
+      <div class="mobile-gate-form">
+        <p>🎀 La aventura está protegida por un pequeño secreto 🎀</p>
+        <form id="passwordFormMobile">
+          <label for="passwordMobile">Introduce la contraseña</label>
+          <input id="passwordMobile" type="password" autocomplete="off" placeholder="Contraseña" required>
+          <button type="submit">Desbloquear la aventura ✨</button>
+          <small id="passwordErrorMobile" role="status"></small>
+        </form>
+      </div>
+    </section>
+
+    <section id="titleScreen" class="screen title-screen hidden">
+      <div class="cover-stage title-cover-stage">
+        <img class="cover-art" src="assets/portada-navidad.png" alt="Tú y el gatito preparados para comenzar la aventura navideña">
+        <div class="cover-start">
+          <p>¡La cerradura se ha abierto!</p>
+          <button id="playBtn" class="main-btn">▶ COMENZAR AVENTURA</button>
+        </div>
+      </div>
+      <div class="mobile-gate-form title-mobile-start">
+        <p>¡Ya estás dentro! ¿Preparada para descubrir los cinco mundos?</p>
+        <button id="playBtnMobile" class="main-btn">▶ COMENZAR AVENTURA</button>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden">
+      <header class="hud">
+        <div class="hud-brand">🐾 <span>EL ÚLTIMO SECRETO</span></div>
+        <div class="hud-stats"><span id="worldName">PUEBLO NEVADO</span><span>★ <b id="starCount">0</b></span><span>♥ <b id="lives">3</b></span></div>
+        <div class="hud-actions"><button id="pauseBtn" aria-label="Pausar">Ⅱ</button><button id="restartBtn" aria-label="Reiniciar mundo">↻</button></div>
+      </header>
+      <div class="canvas-wrap"><canvas id="game" width="960" height="540" aria-label="Videojuego de plataformas"></canvas>
+        <div id="toast" class="toast"></div>
+        <div id="dialog" class="dialog hidden"><div class="dialog-inner"><button id="dialogClose" class="close">×</button><div id="dialogIcon" class="dialog-icon">✦</div><h2 id="dialogTitle">Un recuerdo</h2><p id="dialogText"></p><div id="dialogChoices" class="dialog-choices"></div><div id="dialogExtra"></div></div></div>
+        <div id="pauseOverlay" class="overlay hidden"><div class="overlay-card"><div class="eyebrow">PAUSA EN LA AVENTURA</div><h2>Un respiro bajo la nieve</h2><button id="resumeBtn" class="main-btn">CONTINUAR</button><button id="pauseRestart" class="ghost-btn">REINICIAR MUNDO</button><button id="toTitle" class="ghost-btn">VOLVER AL INICIO</button></div></div>
+        <div id="worldOverlay" class="overlay hidden"><div class="overlay-card"><div class="world-emblem" id="worldEmblem">❄</div><p class="eyebrow">MUNDO DESBLOQUEADO</p><h2 id="worldTitle">Pueblo nevado</h2><p id="worldDescription"></p><button id="enterWorld" class="main-btn">ENTRAR AL MUNDO →</button></div></div>
+        <div id="finalOverlay" class="overlay hidden"><div class="overlay-card final-card"><div class="final-sparkle">✧ ✦ ❄ ✦ ✧</div><h2>El secreto era...</h2><p id="finalMessage">Hay recuerdos que iluminan incluso la noche más fría.</p><div class="final-cat">🐈</div><button id="playAgain" class="main-btn">VOLVER A VIVIR LA AVENTURA</button></div></div>
+      </div>
+      <div class="mobile-controls">
+        <div class="move-controls"><button data-key="left">◀</button><button data-key="right">▶</button></div>
+        <div class="action-controls"><button data-key="jump">↑</button><button data-key="action">✦</button></div>
+      </div>
+      <footer class="game-footer"><span>✦ Explora · recoge estrellas · encuentra la llave</span><span id="objective">Busca la primera estrella</span></footer>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
